@@ -100,7 +100,7 @@ public class Auction {
             if(i==(coastList.size())){coast=coast/i;}
         }
         if(coast==0){System.out.println("0 n/a");}
-        else {System.out.println(String.format(Locale.ROOT, "%.2f", (double) coast/100)+" "+maxSells);}
+        else {System.out.println(maxSells+" "+String.format(Locale.ROOT, "%.2f", (double) coast/100));}
 
     }
 }
