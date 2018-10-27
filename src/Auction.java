@@ -64,8 +64,11 @@ public class Auction {
                 buyNumb=buyMap.getOrDefault(coast,0);
                 //buyers sold all
                 if(buyNumb==0){
-                    if(buyIter.hasNext()){coast = Integer.parseInt(buyIter.next().toString());}
-                    buyNumb=buyMap.getOrDefault(coast,0);
+                    if(buyIter.hasNext()){
+                        coast = Integer.parseInt(buyIter.next().toString());
+                        buyNumb=buyMap.getOrDefault(coast,0);}
+                    else{break;}
+
                 }
                 //seller coast lower than buyer
                 if(coast>=sellCoast) {
