@@ -4,11 +4,18 @@ import java.util.*;
 public class Auction {
 
     private double coast;
-
     private String fileName;
 
-    public void setFileName(String fileName) {
+    FileParser fileParser;
+
+    public Auction(String fileName) {
         this.fileName = fileName;
+        fileParser = new FileParser(fileName);
+    }
+
+
+    public void setWorkingDir(String workingDir) {
+        fileParser.setWorkingDir( workingDir);
     }
 
     public String getResult(){
@@ -16,7 +23,7 @@ public class Auction {
         TreeMap<Integer,Integer> buyMap =new TreeMap<>(); //key-coast*100,value-quantity
 
         //Parse requests from file
-        FileParser fileParser = new FileParser(fileName);
+
         fileParser.Parse(sellMap,buyMap);
 
 
@@ -33,8 +40,7 @@ public class Auction {
 
     public static void main(String args[]){
 
-        Auction auction = new Auction();
-        auction.setFileName("1.txt");
+        Auction auction = new Auction("1.txt");
         System.out.println(auction.getResult());
 
     }

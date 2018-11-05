@@ -11,6 +11,11 @@ public class FileParser {
     private String line;
     private String path;
     private String fileName;
+    private String workingDir;
+
+    public void setWorkingDir(String workingDir) {
+        this.workingDir = workingDir;
+    }
 
     private double coastDouble;
     private int coast=0;
@@ -20,7 +25,10 @@ public class FileParser {
     private int lineNumb=0;
     private String [] split;
 
-    public FileParser(String fileName){this.fileName=fileName;}
+    public FileParser(String fileName){
+        workingDir = System.getProperty("user.dir")+"\\resources\\";
+        this.fileName=fileName;
+    }
 
     /**
      * Reads file and stores data to this maps
@@ -29,9 +37,7 @@ public class FileParser {
      */
     public void Parse(TreeMap<Integer,Integer> sellMap,TreeMap<Integer,Integer> buyMap){
         try {
-            String workingDir = System.getProperty("user.dir");
-            System.out.println(workingDir);
-            path=workingDir+"\\resources\\"+fileName;
+            path=workingDir+fileName;
 
             BufferedReader buf = new BufferedReader(new InputStreamReader(new FileInputStream(path),"UTF-8"));
 
