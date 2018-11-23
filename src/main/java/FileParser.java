@@ -35,7 +35,7 @@ public class FileParser {
      * @param  sellMap  sell requests to be stored in this map
      * @param  buyMap   buy  requests to be stored in this map
      */
-    public void Parse(TreeMap<Integer,Integer> sellMap,TreeMap<Integer,Integer> buyMap){
+    public void Parse(TreeMap<Integer,Integer> sellMap,TreeMap<Integer,Integer> buyMap) throws IOException {
         try {
             path=workingDir+fileName;
 
@@ -69,6 +69,7 @@ public class FileParser {
 
         } catch (IOException e) {
             e.printStackTrace();
+            throw e;
         }
     }
 

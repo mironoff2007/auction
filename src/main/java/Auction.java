@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.*;
 
 public class Auction {
@@ -18,7 +19,7 @@ public class Auction {
         fileParser.setWorkingDir( workingDir);
     }
 
-    public String getResult(){
+    public String getResult() throws IOException {
         TreeMap<Integer,Integer> sellMap=new TreeMap<>(); //key-coast*100,value-quantity
         TreeMap<Integer,Integer> buyMap =new TreeMap<>(); //key-coast*100,value-quantity
 
@@ -38,10 +39,14 @@ public class Auction {
 
     }
 
-    public static void main(String args[]){
+    public static void main(String args[])  {
 
         Auction auction = new Auction("1.txt");
-        System.out.println(auction.getResult());
+        try {
+            System.out.println(auction.getResult());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
