@@ -17,8 +17,8 @@ public class FileParser {
         this.workingDir = workingDir;
     }
 
-    private double coastDouble;
-    private int coast=0;
+    private double costDouble;
+    private int cost=0;
 
     private int tradeNumb;//quantity of trade items
 
@@ -46,22 +46,22 @@ public class FileParser {
             while((line=buf.readLine())!=null&&lineNumb<1000000){
                 lineNumb++;
                 split=line.split(" ");
-                coastDouble= new Double(String.valueOf(split[2]));
-                coast=(int)(coastDouble*100);
+                costDouble= new Double(String.valueOf(split[2]));
+                cost=(int)(costDouble*100);
                 tradeNumb=Integer.parseInt(split[1]);
-                //coast limited by 10000
-                if(coast>10000){coast=10000;}
-                if(coast<0){coast=0;}
+                //cost limited by 10000
+                if(cost>10000){cost=10000;}
+                if(cost<0){cost=0;}
                 //quantity of trade items is limited by 10000
                 if(tradeNumb>1000){tradeNumb=1000;}
                 if(tradeNumb<0){tradeNumb=0;}
                 //store buy or sell request
                 switch(split[0]){
                     case "B":
-                        buyMap.put(coast,tradeNumb+buyMap.getOrDefault(coast,0));
+                        buyMap.put(cost,tradeNumb+buyMap.getOrDefault(cost,0));
                         break;
                     case "S":
-                        sellMap.put(coast,tradeNumb+sellMap.getOrDefault(coast,0));
+                        sellMap.put(cost,tradeNumb+sellMap.getOrDefault(cost,0));
                         break;
                 }
             }

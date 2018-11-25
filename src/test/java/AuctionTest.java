@@ -26,13 +26,20 @@ public class AuctionTest {
     public void test2() throws IOException {
         Auction auction = new Auction("test2.txt");
         auction.setWorkingDir(path);
-        assertEquals("100 15.15", auction.getResult());
+        assertEquals("200 15.30", auction.getResult());
     }
 
     @Test
     public void test3() throws IOException {
         Auction auction = new Auction("test3.txt");
         auction.setWorkingDir(path);
-        assertEquals("150 16.00", auction.getResult());
+        assertEquals("600 2.00", auction.getResult());
+    }
+
+    @Test
+    public void test4() throws IOException {
+        Auction auction = new Auction("test4.txt");
+        auction.setWorkingDir(path);
+        assertEquals("150 85.00", auction.getResult());
     }
 }

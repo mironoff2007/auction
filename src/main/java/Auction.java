@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Auction {
 
-    private double coast;
+    private double cost;
     private String fileName;
 
     FileParser fileParser;
@@ -20,22 +20,22 @@ public class Auction {
     }
 
     public String getResult() throws IOException {
-        TreeMap<Integer,Integer> sellMap=new TreeMap<>(); //key-coast*100,value-quantity
-        TreeMap<Integer,Integer> buyMap =new TreeMap<>(); //key-coast*100,value-quantity
+        TreeMap<Integer,Integer> sellMap=new TreeMap<>(); //key-cost*100,value-quantity
+        TreeMap<Integer,Integer> buyMap =new TreeMap<>(); //key-cost*100,value-quantity
 
         //Parse requests from file
 
         fileParser.Parse(sellMap,buyMap);
 
 
-        //Calculate optimal coast for maximum sells
+        //Calculate optimal cost for maximum sells
         Calculator calculator = new Calculator();
-        coast=calculator.calcOptimalCoast(sellMap,buyMap);
+        cost=calculator.calcOptimalCost(sellMap,buyMap);
         int maxSells=calculator.getMaxSells();
 
         //Print result
-        if(coast==0){return "0 n/a";}
-        else {return(maxSells+" "+String.format(Locale.ROOT, "%.2f", coast));}
+        if(cost==0){return "0 n/a";}
+        else {return(maxSells+" "+String.format(Locale.ROOT, "%.2f", cost));}
 
     }
 
